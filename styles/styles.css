@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+:root {
+  --black: #222831;
+  --gray: #393e46;
+  --blue: #00adb5;
+  --blue2: #0f5685;
+  --white: #eeeeee;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.navbarcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 150px;
+  background-color: var(--black);
+  padding: 25px 0px;
+  color: var(--white);
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar1,
+.navbar2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  text-align: center;
+}
+
+.navbar1 {
+  gap: 25px;
+}
+.navbar2 {
+  gap: 5px;
+}
+
+.logo {
+  color: var(--white);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.logo > span {
+  color: var(--blue);
+}
+
+.connecter {
+  padding: 10px 20px;
+  border: 1px solid var(--blue);
+  border-radius: 50px;
+}
+
+.connecter:hover {
+  padding: 11px 21px;
+  border: none;
+  background: linear-gradient(to left, var(--blue), var(--blue2));
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.inscription {
+  padding: 11px 25px;
+  background: linear-gradient(to left, var(--blue), var(--blue2));
+  border-radius: 50px;
+}
+
+.inscription:hover {
+  background: none;
+  padding: 10px 24px;
+  border: 1px solid var(--blue);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.main {
+  height: 90vh;
+  background-color: rgb(19, 19, 19);
+  position: relative;
+}
+
+.top-designs {
+  height: 80vh;
+  background-color: white;
+  position: relative;
+}
+
+.voir-designs {
+  background-color: #00adb5;
+  height: 50vh;
+  position: relative;
+}
+
+.footer {
+  height: 500px;
+  position: relative;
+  background-color: var(--blue2);
+}
