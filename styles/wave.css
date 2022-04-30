@@ -38,3 +38,45 @@
 .custom-shape-divider-top-1650420830 .shape-fill {
   fill: #ffffff;
 }
+
+.custom-shape-divider-top-1651291660 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1651291660 svg {
+  position: relative;
+  display: block;
+  width: calc(145% + 1.3px);
+  height: 55px;
+}
+
+.custom-shape-divider-top-1651291660 .shape-fill {
+  fill: #ffffff;
+}
+
+.custom-shape-divider-bottom-1651292916 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1651292916 svg {
+  position: relative;
+  display: block;
+  width: calc(145% + 1.3px);
+  height: 55px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1651292916 .shape-fill {
+  fill: #ffffff;
+}

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Water+Brush&display=swap");
 
 :root {
   --black: #222831;
@@ -16,6 +17,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
 }
 
 .navbarcontainer {
@@ -51,7 +53,7 @@
 
 .logo {
   color: var(--white);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
 }
 
@@ -59,7 +61,7 @@
   cursor: pointer;
 }
 
-.logo > span {
+.logo span {
   color: var(--blue);
 }
 
@@ -111,15 +113,35 @@
   transition-duration: 0.5s;
 }
 
-.nav-btn:hover {
+.nav-btn a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.nav-btn a:hover {
   color: var(--pink);
-  cursor: pointer;
 }
 
 .main {
-  height: 90vh;
+  height: 800px;
   background-color: rgb(30, 30, 30);
   position: relative;
+}
+
+.ligne1 {
+  width: 300px;
+  height: 4px;
+  background-color: var(--blue);
+  margin: auto;
+  margin-bottom: 2px;
+}
+
+.ligne2 {
+  width: 100px;
+  height: 4px;
+  background-color: var(--blue);
+  margin: auto;
+  margin-top: 2px;
 }
 
 .maincontent {
@@ -131,9 +153,14 @@
 }
 
 .maindiv span {
-  font-size: 48px;
+  font-size: 80px;
   font-weight: bold;
+  font-family: "Water Brush", cursive;
   color: var(--blue);
+}
+
+.maindiv .maintitle {
+  color: var(--pink);
 }
 
 .maindiv p {
@@ -142,18 +169,49 @@
   color: var(--white);
 }
 
+.maindiv img {
+  animation: ani 2s ease-in-out infinite;
+}
+
+@keyframes ani {
+  0% {
+    margin-top: 0px;
+    transform: rotate(1deg);
+  }
+  25% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    margin-top: 15px;
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    margin-top: 0px;
+    transform: rotate(1deg);
+  }
+}
+
 .top-designs {
-  height: 80vh;
+  height: 800px;
   background-color: white;
   position: relative;
   text-align: center;
-  color: var(--gray);
+  color: var(--black);
   font-weight: bold;
   padding-top: 50px;
 }
 
 .top-designs h1 {
-  font-size: 32px;
+  font-family: "Water Brush", cursive;
+  font-size: 72px;
+}
+
+.top-designs h1::after {
+  content: "!";
+  color: var(--pink);
 }
 
 .meilleur-container {
@@ -165,8 +223,8 @@
 }
 
 .carte {
-  width: 350px;
-  height: 500px;
+  width: 300px;
+  height: 450px;
   background-color: var(--white);
   border-radius: 20px;
   box-shadow: -3px 3px 15px;
@@ -180,9 +238,19 @@
   transition-duration: 0.3s;
 }
 
+.carte a {
+  text-decoration: none;
+  color: black;
+}
+
+.carte a:hover {
+  text-decoration: none;
+  color: var(--blue);
+}
+
 .carte-img {
   width: 100%;
-  height: 300px;
+  height: 250px;
   object-fit: cover;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
@@ -214,14 +282,14 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  font-size: 14px;
+  font-size: 13px;
   padding-bottom: 15px;
   padding-left: 15px;
 }
 
 .utilisateur-carte {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 9999px;
   object-fit: cover;
   margin-right: 15px;
@@ -237,14 +305,213 @@
   color: var(--pink);
 }
 
-.voir-designs {
-  background-color: #00adb5;
-  height: 50vh;
+.stats {
+  background: linear-gradient(
+      to bottom,
+      rgba(162, 219, 255, 0.3),
+      rgba(30, 174, 218, 0.8)
+    ),
+    url(../images/statsbg.jpeg);
+  background-attachment: fixed;
+  height: 550px;
   position: relative;
 }
 
+.stats h1 {
+  font-family: "Water Brush", cursive;
+  text-align: center;
+  color: black;
+  font-size: 72px;
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+
+.stats h1::after {
+  content: "!";
+  color: var(--pink);
+}
+
+.statsflex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+.statsflexelement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.statstext h2 {
+  font-size: 46px;
+  font-weight: bold;
+  color: black;
+}
+
+.statstext h4 {
+  font-size: 20px;
+  color: var(--black);
+}
+
+.temoignages {
+  height: 700px;
+  background-color: white;
+  position: relative;
+  text-align: center;
+  color: var(--black);
+  padding-top: 50px;
+}
+
+.temoignages h1 {
+  font-family: "Water Brush", cursive;
+  font-size: 72px;
+  padding-bottom: 80px;
+}
+
+.temoignages h1::after {
+  content: "!";
+  color: var(--pink);
+}
+
+.temContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.temCarte {
+  width: 300px;
+  height: 350px;
+  border: 2px solid var(--blue);
+  border-radius: 20px;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.temCarte:hover {
+  border: 2px solid var(--pink);
+}
+
+.temCarte::before {
+  content: "#1";
+  line-height: 70px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  height: 70px;
+  width: 500px;
+  color: white;
+  background-color: var(--blue);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.temCarte:hover::before {
+  background-color: var(--pink);
+}
+
+.temCarte h2 {
+  font-size: 20px;
+  padding-bottom: 50px;
+  text-decoration: underline solid var(--blue);
+}
+
+.temCarte #temImg {
+  border-radius: 9999px;
+  border: 2px solid var(--blue);
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.temCarte #temImg:hover {
+  border: 2px solid var(--pink);
+}
+
+#temQuote1,
+#temQuote2 {
+  position: absolute;
+}
+
+#temQuote1 {
+  top: 180px;
+  left: 20px;
+}
+
+#temQuote2 {
+  bottom: 10px;
+  right: 20px;
+  transform: rotate(180deg);
+}
+
 .footer {
-  height: 500px;
+  height: 450px;
   position: relative;
   background-color: rgb(30, 30, 30);
+  padding-top: 200px;
+  color: var(--white);
+}
+
+.flexfooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.footer h1 {
+  color: var(--white);
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.footer h1 span {
+  color: var(--blue);
+}
+
+.fsocials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.fsocial {
+  width: 50px;
+  height: 50px;
+  border: 2px solid white;
+  color: white;
+  border-radius: 9999px;
+  background: none;
+  text-align: center;
+  line-height: 50px;
+  font-size: 28px;
+}
+
+.fsocial:hover {
+  border: 2px solid var(--blue);
+  color: var(--blue);
+}
+
+.contactinfo {
+  margin-top: 20px;
+}
+
+.contactinfo div {
+  padding-top: 10px;
+}
+
+.contactinfo i {
+  font-size: 20px;
+  padding-right: 10px;
 }
