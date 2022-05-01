@@ -37,17 +37,6 @@
     </head>
 
     <body onload="javascript:controle()">
-        <!--
-        testtt
-        <div>
-            <?php
-            $utilisateurs = $maDb_connexion->query("SELECT * FROM gallerie.utilisateurs")->fetchAll();
-            foreach ($utilisateurs as $ligne) {
-                echo "<div>" . $ligne['prenom'] . "</div>";
-            }
-            ?>
-        </div>
-        -->
         <div class="navbarcontainer">
             <div class="logo">Ma <span>Gallerie</span></div>
             <div class="navbar1">
@@ -94,7 +83,7 @@
                             <div class="img-description">Dessin moderne d'une femme sur bois utilisant les couleurs marron et bleu</div>
                         </div>
                         <div class="utilisateur-info">
-                            <img class="utilisateur-carte" src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?width=300" alt="utilisateur 1">
+                            <img class="utilisateur-carte" src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?width=100" alt="utilisateur 1">
                             <div><a href="./profile.php?id=1">Ahmad Yengui</a></div>
                         </div>
                     </div>
@@ -107,7 +96,7 @@
                             <div class="img-description">Tableau artistique utilisant la peinture noire, bleu et jaune test test test test test test test test test test test test test test test test test test test test test test testtest test test test test test test test test test test test test test test test </div>
                         </div>
                         <div class="utilisateur-info">
-                            <img class="utilisateur-carte" src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg" alt="utilisateur 1">
+                            <img class="utilisateur-carte" src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?width=100" alt="utilisateur 1">
                             <div><a href="./profile.php?id=1">Ahmad Yengui</a></div>
                         </div>
                     </div>
@@ -120,7 +109,7 @@
                             <div class="img-description">Image de fleurs</div>
                         </div>
                         <div class="utilisateur-info">
-                            <img class="utilisateur-carte" src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg" alt="utilisateur 1">
+                            <img class="utilisateur-carte" src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?width=100" alt="utilisateur 1">
                             <div><a href="./profile.php?id=1">Ahmad Yengui</a></div>
                         </div>
                     </div>
@@ -169,7 +158,7 @@
 
                 <div class="temCarte">
                     <img id="temQuote1" src="./images/quote.svg" alt="quote mark">
-                    <img id="temImg" src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg" alt="utilisateur1">
+                    <img id="temImg" src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?width=200" alt="utilisateur1">
                     <h2>Ahmad Yengui</h2>
                     <p>Je peux dire que c'est le meilleur site pour les artistes Tunisiens</p>
                     <img id="temQuote2" src="./images/quote.svg" alt="quote mark">
@@ -177,7 +166,7 @@
 
                 <div class="temCarte">
                     <img id="temQuote1" src="./images/quote.svg" alt="quote mark">
-                    <img id="temImg" src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg" alt="utilisateur1">
+                    <img id="temImg" src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?width=200" alt="utilisateur1">
                     <h2>Ahmad Yengui</h2>
                     <p>Je peux dire que c'est le meilleur site pour les artistes Tunisiens</p>
                     <img id="temQuote2" src="./images/quote.svg" alt="quote mark">
@@ -185,7 +174,7 @@
 
                 <div class="temCarte">
                     <img id="temQuote1" src="./images/quote.svg" alt="quote mark">
-                    <img id="temImg" src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg" alt="utilisateur1">
+                    <img id="temImg" src="https://images.pexels.com/photos/846741/pexels-photo-846741.jpeg?width=200" alt="utilisateur1">
                     <h2>Ahmad Yengui</h2>
                     <p>Je peux dire que c'est le meilleur site pour les artistes Tunisiens</p>
                     <img id="temQuote2" src="./images/quote.svg" alt="quote mark">

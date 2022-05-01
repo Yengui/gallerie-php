@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="./styles/auth.css">
     <link rel="stylesheet" href="./styles/wave.css">
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/460debd51d.js" crossorigin="anonymous"></script>
     <script src="./scripts/validation.js" defer></script>
-    <title>Login</title>
+    <title>S'inscrire</title>
 </head>
 
 <body>
@@ -97,4 +98,3 @@
 </body>
 
 </html>
-
