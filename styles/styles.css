@@ -51,14 +51,15 @@
   gap: 5px;
 }
 
+.navbar2 a {
+  text-decoration: none;
+}
+
 .logo {
   color: var(--white);
   font-size: 28px;
   font-weight: bold;
-}
-
-.logo:hover {
-  cursor: pointer;
+  pointer-events: none;
 }
 
 .logo span {
@@ -71,6 +72,7 @@
   border-radius: 50px;
   transition-duration: 0.5s;
   background: var(--black);
+  color: var(--white);
 }
 
 .connecter:hover {
@@ -103,12 +105,12 @@
   border-radius: 50px;
   border: 1px solid var(--black);
   transition-duration: 0.5s;
+  color: var(--white);
 }
 
 .inscription:hover {
   background: var(--black);
   border: 1px solid var(--pink);
-  color: var(--white);
   cursor: pointer;
   transition-duration: 0.5s;
 }
@@ -167,31 +169,6 @@
   color: rgb(200, 200, 200);
   margin-top: 20px;
   color: var(--white);
-}
-
-.maindiv img {
-  animation: ani 2s ease-in-out infinite;
-}
-
-@keyframes ani {
-  0% {
-    margin-top: 0px;
-    transform: rotate(1deg);
-  }
-  25% {
-    transform: rotate(-1deg);
-  }
-  50% {
-    margin-top: 15px;
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(-1deg);
-  }
-  100% {
-    margin-top: 0px;
-    transform: rotate(1deg);
-  }
 }
 
 .top-designs {
@@ -467,12 +444,24 @@
   flex-direction: column;
 }
 
+.flexfooterhorizontal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.footerimg {
+  width: 200px;
+  height: 200px;
+}
+
 .footer h1 {
   color: var(--white);
   text-align: center;
   font-size: 28px;
   font-weight: bold;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .footer h1 span {

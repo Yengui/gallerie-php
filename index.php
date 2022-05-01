@@ -53,22 +53,26 @@
             <div class="navbar1">
                 <div class="nav-btn"><a href="./#">accueil</a></div>
                 <div class="nav-btn"><a href="./designs.php">designs</a></div>
-                <div class="nav-btn"><a href="#meilleurs">meilleurs</a></div>
-                <div class="nav-btn"><a href="#temoignages">temoignages</a></div>
+                <div class="nav-btn"><a href="./#meilleurs">meilleurs</a></div>
+                <div class="nav-btn"><a href="./#temoignages">temoignages</a></div>
             </div>
             <div class="navbar2">
-                <div class="connecter">se connecter</div>
-                <div class="inscription">s'inscrire</div>
+                <a href="./login.php">
+                    <div class="connecter">se connecter</div>
+                </a>
+                <a href="./signup.php">
+                    <div class="inscription">s'inscrire</div>
+                </a>
             </div>
         </div>
         <section class="main">
             <div class="maincontent">
                 <div class="maindiv">
                     <span>Bienvenue dans<br /><span class="maintitle">Ma Gallerie!</span></span>
-                    <p>La première gallerie tunisienne<br /> de design graphique</p>
+                    <p>La première gallerie tunisienne<br />destinée pour les artistes</p>
                 </div>
                 <div class="maindiv">
-                    <img height="480px" width="640px" src="./images/mainpic.svg" alt="main illustration">
+                    <img height="447px" width="558px" src="./images/mainpic.png" alt="main illustration">
                 </div>
             </div>
             <div class="custom-shape-divider-bottom-1650420115" id="meilleurs">
@@ -195,28 +199,31 @@
                     <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
                 </svg>
             </div>
-            <div class="flexfooter">
-                <div>
-                    <h1>Ma <span>Gallerie</span></h1>
-                </div>
-                <div class="fsocials">
-                    <a target="_blank" href="http://facebook.com/">
-                        <div class="fsocial"><i class="fa fa-facebook"></i></div>
-                    </a>
+            <div class="flexfooterhorizontal">
+                <div class="flexfooter">
+                    <div>
+                        <h1>Ma <span>Gallerie</span></h1>
+                    </div>
+                    <div class="fsocials">
+                        <a target="_blank" href="http://facebook.com/">
+                            <div class="fsocial"><i class="fa fa-facebook"></i></div>
+                        </a>
 
-                    <a target="_blank" href="http://instagram.com/">
-                        <div class="fsocial"><i class="fa fa-instagram"></i></div>
-                    </a>
+                        <a target="_blank" href="http://instagram.com/">
+                            <div class="fsocial"><i class="fa fa-instagram"></i></div>
+                        </a>
 
-                    <a target="_blank" href="http://whatsapp.com/">
-                        <div class="fsocial"><i class="fa fa-whatsapp"></i></div>
-                    </a>
+                        <a target="_blank" href="http://whatsapp.com/">
+                            <div class="fsocial"><i class="fa fa-whatsapp"></i></div>
+                        </a>
 
+                    </div>
+                    <div class="contactinfo">
+                        <div><i class="fa fa-phone"></i> +216 22 222 222</div>
+                        <div><i class="fa fa-at"></i> email@email.com</div>
+                    </div>
                 </div>
-                <div class="contactinfo">
-                    <div><i class="fa fa-phone"></i> +216 22 222 222</div>
-                    <div><i class="fa fa-at"></i> email@email.com</div>
-                </div>
+                <img class="footerimg" src="./images/footericon.png" alt="art">
             </div>
         </section>
         <script src="./scripts/script.js"></script>
