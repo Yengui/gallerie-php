@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="stylesheet" href="./styles/auth.css">
     <link rel="stylesheet" href="./styles/wave.css">
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
+    <script src="./scripts/validation.js" defer></script>
     <title>Login</title>
 </head>
 
@@ -31,7 +33,7 @@
     </div>
 
     <section class="loginsection">
-        <form action="./profile.php" method="POST" id="form2">
+        <form action="process-signup.php" method="POST" id="form2" novalidate>
             <div class="img2">
                 <img src="./images/signupvector.png" width="190px" height="223px" alt="login">
             </div>
@@ -95,3 +97,4 @@
 </body>
 
 </html>
+
