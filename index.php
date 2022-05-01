@@ -1,30 +1,20 @@
-    <?php
-    class ConnexionBD
-    {
-        private static $_dbname = "gallerie";
-        private static $_user = "root";
-        private static $_pwd = "";
-        private static $_host = "localhost";
-        private static $_bdd = null;
-        private function __construct()
-        {
-            try {
-                self::$_bdd = new PDO("mysql:host=" . self::$_host . ";dbname=" . self::$_dbname . ";charset=utf8", self::$_user, self::$_pwd, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8'));
-            } catch (PDOException $e) {
-                die('Erreur : ' . $e->getMessage());
-            }
-        }
-        public static function getInstance()
-        {
-            if (!self::$_bdd) {
-                new ConnexionBD();
-                return (self::$_bdd);
-            }
-            return (self::$_bdd);
-        }
-    }
-    $maDb_connexion = ConnexionBD::getInstance();
-    ?>
+<?php
+
+session_start();
+
+if (isset($_SESSION["user_id"])) {
+    
+    $mysqli = require __DIR__ . "/database.php";
+    
+    $sql = "SELECT * FROM users
+            WHERE id = {$_SESSION["user_id"]}";
+            
+    $result = $mysqli->query($sql);
+    
+    $user = $result->fetch_assoc();
+}
+
+?>
     <!DOCTYPE html>
     <html lang="en">
 
@@ -37,17 +27,8 @@
     </head>
 
     <body onload="javascript:controle()">
-        <!--
-        testtt
-        <div>
-            <?php
-            $utilisateurs = $maDb_connexion->query("SELECT * FROM gallerie.utilisateurs")->fetchAll();
-            foreach ($utilisateurs as $ligne) {
-                echo "<div>" . $ligne['prenom'] . "</div>";
-            }
-            ?>
-        </div>
-        -->
+      
+
         <div class="navbarcontainer">
             <div class="logo">Ma <span>Gallerie</span></div>
             <div class="navbar1">
@@ -56,6 +37,16 @@
                 <div class="nav-btn"><a href="./#meilleurs">meilleurs</a></div>
                 <div class="nav-btn"><a href="./#temoignages">temoignages</a></div>
             </div>
+            <?php if (isset($user)): ?>
+        
+            <p>Bienvenue<?= htmlspecialchars($user["prenom"]) ?>!</p>
+        
+            <a href="./logout.php">
+                    <div class="inscription">Déconnexion</div>
+                </a>
+        
+            <?php else: ?>
+        
             <div class="navbar2">
                 <a href="./login.php">
                     <div class="connecter">se connecter</div>
@@ -64,6 +55,7 @@
                     <div class="inscription">s'inscrire</div>
                 </a>
             </div>
+            <?php endif; ?>
         </div>
         <section class="main">
             <div class="maincontent">
