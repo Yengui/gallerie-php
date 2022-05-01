@@ -41,7 +41,7 @@
             <div class="logo">Ma <span>Gallerie</span></div>
             <div class="navbar1">
                 <div class="nav-btn"><a href="./#">accueil</a></div>
-                <div class="nav-btn"><a href="./designs.php">designs</a></div>
+                <div class="nav-btn"><a href="./gallerie.php">gallerie</a></div>
                 <div class="nav-btn"><a href="./#meilleurs">meilleurs</a></div>
                 <div class="nav-btn"><a href="./#temoignages">temoignages</a></div>
             </div>
@@ -71,7 +71,7 @@
             </div>
         </section>
         <section class="top-designs">
-            <h1>Meilleurs designs du mois</h1>
+            <h1>Meilleurs postes du mois</h1>
             <div class="ligne1"></div>
             <div class="ligne2"></div>
             <div class="meilleur-container">
@@ -123,6 +123,8 @@
                 </svg>
             </div>
             <h1>Statistiques</h1>
+            <div class="ligne1"></div>
+            <div class="ligne2"></div>
             <div class="statsflex">
                 <div class="statsflexelement">
                     <div class="statsicon"><img src="./images/newspaper.png" height="100px" width="100px" alt="utilisateurs"></div>
@@ -142,7 +144,7 @@
                     <div class="statsicon"><img src="./images/positive-vote.png" height="100px" width="100px" alt="utilisateurs"></div>
                     <div class="statstext">
                         <h2>36521</h2>
-                        <h4>mentions j'aime</h4>
+                        <h4>réactions</h4>
                     </div>
                 </div>
             </div>
@@ -154,6 +156,8 @@
         </section>
         <section class="temoignages">
             <h1>Témoignages</h1>
+            <div class="ligne1"></div>
+            <div class="ligne2"></div>
             <div class="temContainer">
 
                 <div class="temCarte">

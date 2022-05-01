@@ -19,7 +19,7 @@
         <div class="logo">Ma <span>Gallerie</span></div>
         <div class="navbar1">
             <div class="nav-btn"><a href="./#">accueil</a></div>
-            <div class="nav-btn"><a href="./designs.php">designs</a></div>
+            <div class="nav-btn"><a href="./gallerie.php">gallerie</a></div>
             <div class="nav-btn"><a href="./#meilleurs">meilleurs</a></div>
             <div class="nav-btn"><a href="./#temoignages">temoignages</a></div>
         </div>

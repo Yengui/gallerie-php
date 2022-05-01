@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+:root {
+  --black: #222831;
+  --gray: #393e46;
+  --blue: #00adb5;
+  --blue2: #0f5685;
+  --white: #eeeeee;
+  --yellow: #f6d365;
+  --orange: #fda085;
+  --pink: #ee609c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.postcontainer {
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50px;
+  box-shadow: -3px 3px 15px gray;
+  border: 1px solid rgb(197, 197, 197);
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 150px;
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.postImg {
+  width: 1000px;
+  height: 600px;
+  object-fit: cover;
+  border-top-right-radius: 50px;
+  border-top-left-radius: 50px;
+}
+
+.postcontainer h1 {
+  text-align: center;
+}
+
+.postDescription {
+  padding: 20px 50px;
+}
+
+.postReactions {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  text-align: center;
+}

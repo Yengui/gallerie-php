@@ -9,11 +9,7 @@
 </head>
 
 <body>
-    <?php
-    $nombre = $_GET["id"];
-    if ($nombre == 1) echo "chtar les designs";
-    else if ($nombre == 2) echo "les designs lkol";
-    ?>
+
 </body>
 
 </html>
