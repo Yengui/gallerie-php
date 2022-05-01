@@ -1,3 +1,40 @@
+<?php
+
+$is_invalid = false;
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    
+    $mysqli = require __DIR__ . "/database.php";
+    
+    $sql = sprintf("SELECT * FROM users
+                    WHERE email = '%s'",
+                   $mysqli->real_escape_string($_POST["email"]));
+    
+    $result = $mysqli->query($sql);
+    
+    $user = $result->fetch_assoc();
+    
+    if ($user) {
+        
+        if (password_verify($_POST["password"], $user["password_hash"])) {
+            
+            session_start();
+            
+            session_regenerate_id();
+            
+            $_SESSION["user_id"] = $user["id"];
+            
+            header("Location: profile.php");
+            exit;
+        }
+    }
+    
+    $is_invalid = true;
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,29 +64,24 @@
     </div>
 
     <section class="loginsection">
-        <form action="./profile.php" method="POST" id="form1">
+        <form  method="POST" id="form1">
             <div class="img">
                 <img src="./images/loginvector.png" width="231px" height="176px" alt="login">
             </div>
             <div>
                 <h3>Se connecter!</h3>
             </div>
+            <?php if ($is_invalid): ?>
+             <em>Invalid login</em>
+             <?php endif; ?>
             <div>
                 <input type="email" placeholder="email" name="email" id="email" required />
             </div>
-            <?php
-            if (isset($_GET["erreur"])) {
-                if ($_GET["erreur"] == "1") echo "email ghalet";
-            }
-            ?>
+            
             <div>
                 <input type="password" placeholder="mot de passe" name="password" id="password" required />
             </div>
-            <?php
-            if (isset($_GET["erreur"])) {
-                if ($_GET["erreur"] == "2") echo "password ghalet";
-            }
-            ?>
+           
             <div>
                 <button type="submit">Se connecter</button>
             </div>

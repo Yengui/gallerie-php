@@ -19,8 +19,9 @@
 
     //ta7ki m3a BD
 
-    if ($_POST["email"] != "haha@haha.com") header("Location: ./login.php?erreur=1");
+    //if ($_POST["email"] != "haha@haha.com") header("Location: ./login.php?erreur=1");
     ?>
 </body>
 
 </html>
+

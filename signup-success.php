@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="stylesheet" href="./styles/auth.css">
     <link rel="stylesheet" href="./styles/wave.css">
-    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
-    <script src="./scripts/validation.js" defer></script>
     <title>Login</title>
 </head>
 
@@ -29,30 +27,21 @@
     </div>
 
     <section class="loginsection">
-        <form action="process-signup.php" method="POST" id="form2" novalidate>
-            <div class="img2">
-                <img src="./images/signupvector.png" width="190px" height="223px" alt="login">
+        <form id="form1" action="login.php">
+            <div class="img">
+                <img src="./images/loginvector.png" width="231px" height="176px" alt="login">
             </div>
             <div>
-                <h3>S'inscrire!</h3>
+                <h3>Succès!</h3>
             </div>
+            <br>
+            <diV>
+    
+            <p>Compte créer avec succés.
+            Vous pouvez maintenant se connecter.</p></div>
             <div>
-                <input type="text" placeholder="prénom" name="prenom" id="prenom" required />
-            </div>
-            <div>
-                <input type="text" placeholder="nom" name="nom" id="nom" required />
-            </div>
-            <div>
-                <input type="email" placeholder="email" name="email" id="email" required />
-            </div>
-            <div>
-                <input type="password" placeholder="mot de passe" name="password" id="password" required />
-            </div>
-            <div>
-                <input type="password" placeholder="confirmer le mot de passe" name="password2" id="password2" required />
-            </div>
-            <div>
-                <button type="submit">S'inscrire</button>
+                
+                <button  type="submit">Se connecter</button>
             </div>
         </form>
     </section>
