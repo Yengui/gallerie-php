@@ -3,32 +3,34 @@
 $is_invalid = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    
+
     $mysqli = require __DIR__ . "/database.php";
-    
-    $sql = sprintf("SELECT * FROM users
+
+    $sql = sprintf(
+        "SELECT * FROM users
                     WHERE email = '%s'",
-                   $mysqli->real_escape_string($_POST["email"]));
-    
+        $mysqli->real_escape_string($_POST["email"])
+    );
+
     $result = $mysqli->query($sql);
-    
+
     $user = $result->fetch_assoc();
-    
+
     if ($user) {
-        
+
         if (password_verify($_POST["password"], $user["password_hash"])) {
-            
+
             session_start();
-            
+
             session_regenerate_id();
-            
+
             $_SESSION["user_id"] = $user["id"];
-            
+
             header("Location: profile.php");
             exit;
         }
     }
-    
+
     $is_invalid = true;
 }
 
@@ -68,7 +70,8 @@ if (isset($_SESSION["user_id"])) {
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="stylesheet" href="./styles/auth.css">
     <link rel="stylesheet" href="./styles/wave.css">
-    <title>Login</title>
+    <script src="https://kit.fontawesome.com/460debd51d.js" crossorigin="anonymous"></script>
+    <title>Se connecter</title>
 </head>
 
 <body>
@@ -76,7 +79,7 @@ if (isset($_SESSION["user_id"])) {
         <div class="logo">Ma <span>Gallerie</span></div>
         <div class="navbar1">
             <div class="nav-btn"><a href="./#">accueil</a></div>
-            <div class="nav-btn"><a href="./designs.php">designs</a></div>
+            <div class="nav-btn"><a href="./gallerie.php">gallerie</a></div>
             <div class="nav-btn"><a href="./#meilleurs">meilleurs</a></div>
             <div class="nav-btn"><a href="./#temoignages">temoignages</a></div>
         </div>
@@ -91,24 +94,24 @@ if (isset($_SESSION["user_id"])) {
     </div>
 
     <section class="loginsection">
-        <form  method="POST" id="form1">
+        <form method="POST" id="form1">
             <div class="img">
                 <img src="./images/loginvector.png" width="231px" height="176px" alt="login">
             </div>
             <div>
                 <h3>Se connecter!</h3>
             </div>
-            <?php if ($is_invalid): ?>
-             <em>Invalid login</em>
-             <?php endif; ?>
+            <?php if ($is_invalid) : ?>
+                <p style="color: red;">email ou mot de passe invalide</p>
+            <?php endif; ?>
             <div>
                 <input type="email" placeholder="email" name="email" id="email" required />
             </div>
-            
+
             <div>
                 <input type="password" placeholder="mot de passe" name="password" id="password" required />
             </div>
-           
+
             <div>
                 <button type="submit">Se connecter</button>
             </div>

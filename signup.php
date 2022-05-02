@@ -30,8 +30,9 @@ if (isset($_SESSION["user_id"])) {
     <link rel="stylesheet" href="./styles/auth.css">
     <link rel="stylesheet" href="./styles/wave.css">
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
+    <script src="https://kit.fontawesome.com/460debd51d.js" crossorigin="anonymous"></script>
     <script src="./scripts/validation.js" defer></script>
-    <title>Login</title>
+    <title>S'inscrire</title>
 </head>
 
 <body>
@@ -39,7 +40,7 @@ if (isset($_SESSION["user_id"])) {
         <div class="logo">Ma <span>Gallerie</span></div>
         <div class="navbar1">
             <div class="nav-btn"><a href="./#">accueil</a></div>
-            <div class="nav-btn"><a href="./designs.php">designs</a></div>
+            <div class="nav-btn"><a href="./gallerie.php">gallerie</a></div>
             <div class="nav-btn"><a href="./#meilleurs">meilleurs</a></div>
             <div class="nav-btn"><a href="./#temoignages">temoignages</a></div>
         </div>
@@ -118,4 +119,3 @@ if (isset($_SESSION["user_id"])) {
 </body>
 
 </html>
-
