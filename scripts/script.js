@@ -13,3 +13,15 @@ function controle() {
     }
   }
 }
+
+function voirReactions() {
+  const react = document.getElementById("reaction");
+  const reactList = document.getElementById("reactionList");
+
+  react.addEventListener("mouseenter", () => {
+    reactList.style.display = "flex";
+  });
+  react.addEventListener("mouseleave", () => {
+    reactList.style.display = "none";
+  });
+}
