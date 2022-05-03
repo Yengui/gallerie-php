@@ -85,7 +85,7 @@ a:hover {
   grid-template-columns: 150px 250px;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   margin-top: 50px;
   width: 100%;
 }
@@ -125,4 +125,8 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.selfGrid {
+  grid-column: 1 / span 2;
 }

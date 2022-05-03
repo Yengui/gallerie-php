@@ -3,16 +3,15 @@
 session_start();
 
 if (isset($_SESSION["user_id"])) {
-    
+
     $mysqli = require __DIR__ . "/database.php";
-    
+
     $sql = "SELECT * FROM users
             WHERE id = {$_SESSION["user_id"]}";
-            
-    $result = $mysqli->query($sql);
-    
-    $user = $result->fetch_assoc();
 
+    $result = $mysqli->query($sql);
+
+    $user = $result->fetch_assoc();
 }
 
 ?>
@@ -25,64 +24,64 @@ $sql111 = "SELECT * FROM posts
             WHERE id_post = {$id}";
 $result111 = $mysqli->query($sql111);
 $us = $result111->fetch_assoc();
-$idUser=$us["id_user"];
+$idUser = $us["id_user"];
 $sql222 = "SELECT * FROM users
             WHERE id = {$idUser}";
 $result222 = $mysqli->query($sql222);
-$us2= $result222->fetch_assoc();
+$us2 = $result222->fetch_assoc();
 
 
-$nomUser=$us2["nom"];
-$imgUser=$us2["photo"];
+$nomUser = $us2["nom"];
+$imgUser = $us2["photo"];
 
 
 $sql3 = "SELECT * FROM posts
             WHERE id_post = {$id}";
 $result3 = $mysqli->query($sql3);
-    
+
 $post = $result3->fetch_assoc();
 
 $sql4 = "SELECT * FROM reactions
             WHERE id_post = {$id}";
 $result4 = $mysqli->query($sql4);
-    
+
 $nb_row = $result4->num_rows;
 
 $sql5 = "SELECT * FROM reactions
             WHERE id_post = {$id} and reaction=1";
 $result5 = $mysqli->query($sql5);
-    
+
 $nb_row2 = $result5->num_rows;
 
 $sql6 = "SELECT * FROM reactions
             WHERE id_post = {$id} and reaction=2";
 $result6 = $mysqli->query($sql6);
-    
+
 $nb_row3 = $result6->num_rows;
 
 
 $sql7 = "SELECT * FROM reactions
             WHERE id_post = {$id} and reaction=3";
 $result7 = $mysqli->query($sql7);
-    
+
 $nb_row4 = $result7->num_rows;
 
 
 if (isset($_SESSION["user_id"])) {
-$sql8 = "SELECT * FROM reactions
+    $sql8 = "SELECT * FROM reactions
             WHERE id_post = {$id} and id_user={$user["id"]}";
-$result8 = $mysqli->query($sql8);
+    $result8 = $mysqli->query($sql8);
 }
-    
+
 if (isset($_SESSION["user_id"])) {
-$nb_row5 = $result8->num_rows;
-if($nb_row5==0){
-    $rea=false;
-}else{
-    
-    $react = $result8->fetch_assoc();
-    $rea=$react["reaction"];
-}
+    $nb_row5 = $result8->num_rows;
+    if ($nb_row5 == 0) {
+        $rea = false;
+    } else {
+
+        $react = $result8->fetch_assoc();
+        $rea = $react["reaction"];
+    }
 }
 
 //example values
@@ -94,19 +93,19 @@ $reactionsLike = $nb_row2;
 $reactionsLove = $nb_row3;
 $reactionsHaha = $nb_row4;
 if (isset($_SESSION["user_id"])) {
-$reaction = $rea; //1 for like, 2 for love, 3 for haha, false for no reaction (it returns false if it finds no line in the db)
+    $reaction = $rea; //1 for like, 2 for love, 3 for haha, false for no reaction (it returns false if it finds no line in the db)
 }
 if (isset($_SESSION["user_id"])) {
-$idUser = $user["id"];
+    $idUser = $user["id"];
 }
 if (isset($_SESSION["user_id"])) {
-$nomUser = $user["prenom"].$user["nom"];
+    $nomUser = $user["prenom"] . " " . $user["nom"];
 }
 
 //take reaction code from $_GET["reaction"] (first check if it is isset($_GET["reaction"])) and change the reaction, if the reaction value is 1 or 2 or 3 set it, if it is 0 delete reaction from table
-if (isset($_GET["reaction"])){
+if (isset($_GET["reaction"])) {
     $reactio = $_GET["reaction"];
-    if($reactio==0){
+    if ($reactio == 0) {
         echo $id;
         echo $user["id"];
         $sql10 = "DELETE FROM reactions
@@ -114,21 +113,20 @@ if (isset($_GET["reaction"])){
         $result10 = $mysqli->query($sql10);
         $reaction = false;
         header("Location: post.php?id={$id}");
-    }else if($reactio>0){
-        if($rea!=false){
-        $reaction=$reactio;
-        $sql11 = "UPDATE reactions SET reaction=$reactio
+    } else if ($reactio > 0) {
+        if ($rea != false) {
+            $reaction = $reactio;
+            $sql11 = "UPDATE reactions SET reaction=$reactio
             WHERE id_post = {$id} and id_user={$user["id"]}";
-        $result11 = $mysqli->query($sql11);
-        header("Location: post.php?id={$id}");
-        }else{
+            $result11 = $mysqli->query($sql11);
+            header("Location: post.php?id={$id}");
+        } else {
             $reactio = $_GET["reaction"];
-            $reaction=$reactio;
+            $reaction = $reactio;
             $sql12 = "INSERT INTO reactions (id_post, id_user, reaction)
             VALUES ({$id}, {$user["id"]}, {$reaction})";
-            $result12 = $mysqli->query($sql12);   
+            $result12 = $mysqli->query($sql12);
             header("Location: post.php?id={$id}");
-        
         }
     }
 }
@@ -181,7 +179,7 @@ if (isset($_GET["reaction"])){
             </div>
         <?php endif; ?>
     </div>
-    
+
     <h1>Consulter la pièce d'art</h1>
     <div class="ligne1"></div>
     <div class="ligne2"></div>
@@ -194,7 +192,7 @@ if (isset($_GET["reaction"])){
         <div class="postReactions">
             <?php
             if (isset($_SESSION["user_id"])) {
-            echo "<div class='postReactNbr'>" . $reactions . " réactions</div>";
+                echo "<div class='postReactNbr'>" . $reactions . " réactions</div>";
             }
             echo "<div class='reactNbrSection'>";
             echo "<div><img src='./images/like.png' alt='jaime' />" . $reactionsLike . "</div>";
@@ -204,7 +202,7 @@ if (isset($_GET["reaction"])){
             echo "<form method='GET' action='./post.php#post'>";
             echo "<input type='hidden' name='id' value='" . $id . "'  />";
             if (isset($_SESSION["user_id"])) {
-            if (!$reaction) {
+                if (!$reaction) {
                     echo "<div id='reaction'>réagir<div id='reactionList'><button type='submit' name='reaction' value='0'><img src='./images/x.png' alt='x' /></button><button type='submit' name='reaction' value='1'><img src='./images/like.png' alt='jaime' /></button><button type='submit' name='reaction' value='2'><img src='./images/love.png' alt='jadore' /></button><button type='submit' name='reaction' value='3'><img src='./images/haha.png' alt='hahareact' /></button></div></div>";
                 } else {
                     if ($reaction == 1) {
@@ -222,10 +220,10 @@ if (isset($_GET["reaction"])){
             ?>
         </div>
         <div class="postUser">
-            <?php echo "<img src='./uploads/" . $imgUser . "' alt='utilisateur'>";?>
+            <?php echo "<img src='./uploads/" . $imgUser . "' alt='utilisateur'>"; ?>
             <div class="nomUtilisateur">
 
-                <?php  echo "<a href='./profile.php?id=" . $idUser . "'><h4>" . $nomUser . "</h4></a>";  ?>
+                <?php echo "<a href='./profile.php?id=" . $id . "'><h4>" . $nomUser . "</h4></a>";  ?>
             </div>
         </div>
     </div>
