@@ -17,8 +17,25 @@ if (isset($_SESSION["user_id"])) {
 
 ?>
 <?php
+$mysqli = require __DIR__ . "/database.php";
+
 $id = $_GET["id"];
 //fetch post by id and get $nom $img $description $reaction $reactions $reactionsLike $reactionsLove $reactionsHaha $nomUser $imgUser $idUser
+$sql111 = "SELECT * FROM posts
+            WHERE id_post = {$id}";
+$result111 = $mysqli->query($sql111);
+$us = $result111->fetch_assoc();
+$idUser=$us["id_user"];
+$sql222 = "SELECT * FROM users
+            WHERE id = {$idUser}";
+$result222 = $mysqli->query($sql222);
+$us2= $result222->fetch_assoc();
+
+
+$nomUser=$us2["nom"];
+$imgUser=$us2["photo"];
+
+
 $sql3 = "SELECT * FROM posts
             WHERE id_post = {$id}";
 $result3 = $mysqli->query($sql3);
@@ -51,11 +68,13 @@ $result7 = $mysqli->query($sql7);
 $nb_row4 = $result7->num_rows;
 
 
-
+if (isset($_SESSION["user_id"])) {
 $sql8 = "SELECT * FROM reactions
             WHERE id_post = {$id} and id_user={$user["id"]}";
 $result8 = $mysqli->query($sql8);
+}
     
+if (isset($_SESSION["user_id"])) {
 $nb_row5 = $result8->num_rows;
 if($nb_row5==0){
     $rea=false;
@@ -64,7 +83,7 @@ if($nb_row5==0){
     $react = $result8->fetch_assoc();
     $rea=$react["reaction"];
 }
-
+}
 
 //example values
 $nom = $post["nom_post"];
@@ -74,10 +93,15 @@ $reactions = $nb_row;
 $reactionsLike = $nb_row2;
 $reactionsLove = $nb_row3;
 $reactionsHaha = $nb_row4;
+if (isset($_SESSION["user_id"])) {
 $reaction = $rea; //1 for like, 2 for love, 3 for haha, false for no reaction (it returns false if it finds no line in the db)
+}
+if (isset($_SESSION["user_id"])) {
 $idUser = $user["id"];
+}
+if (isset($_SESSION["user_id"])) {
 $nomUser = $user["prenom"].$user["nom"];
-$imgUser = "utilisateur1.jpeg";
+}
 
 //take reaction code from $_GET["reaction"] (first check if it is isset($_GET["reaction"])) and change the reaction, if the reaction value is 1 or 2 or 3 set it, if it is 0 delete reaction from table
 if (isset($_GET["reaction"])){
@@ -135,14 +159,27 @@ if (isset($_GET["reaction"])){
             <div class="nav-btn"><a href="./#meilleurs">meilleurs</a></div>
             <div class="nav-btn"><a href="./#temoignages">temoignages</a></div>
         </div>
-        <div class="navbar2">
-            <a href="./login.php">
-                <div class="connecter">se connecter</div>
-            </a>
-            <a href="./signup.php">
-                <div class="inscription">s'inscrire</div>
-            </a>
-        </div>
+        <?php if (isset($user)) : ?>
+            <div class="navbar2">
+                <a href="./profile.php" style="text-decoration: none;">
+                    <div class="inscription">mon profil</div>
+                </a>
+
+                <a href="./logout.php" style="text-decoration: none;">
+                    <div class="connecter">déconnexion</div>
+                </a>
+            </div>
+        <?php else : ?>
+
+            <div class="navbar2">
+                <a href="./login.php">
+                    <div class="connecter">se connecter</div>
+                </a>
+                <a href="./signup.php">
+                    <div class="inscription">s'inscrire</div>
+                </a>
+            </div>
+        <?php endif; ?>
     </div>
     
     <h1>Consulter la pièce d'art</h1>
@@ -156,7 +193,9 @@ if (isset($_GET["reaction"])){
         ?>
         <div class="postReactions">
             <?php
+            if (isset($_SESSION["user_id"])) {
             echo "<div class='postReactNbr'>" . $reactions . " réactions</div>";
+            }
             echo "<div class='reactNbrSection'>";
             echo "<div><img src='./images/like.png' alt='jaime' />" . $reactionsLike . "</div>";
             echo "<div><img src='./images/love.png' alt='jadore' />" . $reactionsLove . "</div>";
@@ -164,26 +203,29 @@ if (isset($_GET["reaction"])){
             echo "</div>";
             echo "<form method='GET' action='./post.php#post'>";
             echo "<input type='hidden' name='id' value='" . $id . "'  />";
+            if (isset($_SESSION["user_id"])) {
             if (!$reaction) {
-                echo "<div id='reaction'>réagir<div id='reactionList'><button type='submit' name='reaction' value='0'><img src='./images/x.png' alt='x' /></button><button type='submit' name='reaction' value='1'><img src='./images/like.png' alt='jaime' /></button><button type='submit' name='reaction' value='2'><img src='./images/love.png' alt='jadore' /></button><button type='submit' name='reaction' value='3'><img src='./images/haha.png' alt='hahareact' /></button></div></div>";
-            } else {
-                if ($reaction == 1) {
-                    echo "<div id='reaction'><img src='./images/like.png' alt='reaction' /><div id='reactionList'><button type='submit' name='reaction' value='0'><img src='./images/x.png' alt='x' /></button><button type='submit' name='reaction' value='1'><img src='./images/like.png' alt='jaime' /></button><button type='submit' name='reaction' value='2'><img src='./images/love.png' alt='jadore' /></button><button type='submit' name='reaction' value='3'><img src='./images/haha.png' alt='hahareact' /></button></div></div>";
-                } elseif ($reaction == 2) {
-                    echo "<div id='reaction'><img src='./images/love.png' alt='reaction' /><div id='reactionList'><button type='submit' name='reaction' value='0'><img src='./images/x.png' alt='x' /></button><button type='submit' name='reaction' value='1'><img src='./images/like.png' alt='jaime' /></button><button type='submit' name='reaction' value='2'><img src='./images/love.png' alt='jadore' /></button><button type='submit' name='reaction' value='3'><img src='./images/haha.png' alt='hahareact' /></button></div></div>";
-                } elseif ($reaction == 3) {
-                    echo "<div id='reaction'><img src='./images/haha.png' alt='reaction' /><div id='reactionList'><button type='submit' name='reaction' value='0'><img src='./images/x.png' alt='x' /></button><button type='submit' name='reaction' value='1'><img src='./images/like.png' alt='jaime' /></button><button type='submit' name='reaction' value='2'><img src='./images/love.png' alt='jadore' /></button><button type='submit' name='reaction' value='3'><img src='./images/haha.png' alt='hahareact' /></button></div></div>";
-                } else {
                     echo "<div id='reaction'>réagir<div id='reactionList'><button type='submit' name='reaction' value='0'><img src='./images/x.png' alt='x' /></button><button type='submit' name='reaction' value='1'><img src='./images/like.png' alt='jaime' /></button><button type='submit' name='reaction' value='2'><img src='./images/love.png' alt='jadore' /></button><button type='submit' name='reaction' value='3'><img src='./images/haha.png' alt='hahareact' /></button></div></div>";
+                } else {
+                    if ($reaction == 1) {
+                        echo "<div id='reaction'><img src='./images/like.png' alt='reaction' /><div id='reactionList'><button type='submit' name='reaction' value='0'><img src='./images/x.png' alt='x' /></button><button type='submit' name='reaction' value='1'><img src='./images/like.png' alt='jaime' /></button><button type='submit' name='reaction' value='2'><img src='./images/love.png' alt='jadore' /></button><button type='submit' name='reaction' value='3'><img src='./images/haha.png' alt='hahareact' /></button></div></div>";
+                    } elseif ($reaction == 2) {
+                        echo "<div id='reaction'><img src='./images/love.png' alt='reaction' /><div id='reactionList'><button type='submit' name='reaction' value='0'><img src='./images/x.png' alt='x' /></button><button type='submit' name='reaction' value='1'><img src='./images/like.png' alt='jaime' /></button><button type='submit' name='reaction' value='2'><img src='./images/love.png' alt='jadore' /></button><button type='submit' name='reaction' value='3'><img src='./images/haha.png' alt='hahareact' /></button></div></div>";
+                    } elseif ($reaction == 3) {
+                        echo "<div id='reaction'><img src='./images/haha.png' alt='reaction' /><div id='reactionList'><button type='submit' name='reaction' value='0'><img src='./images/x.png' alt='x' /></button><button type='submit' name='reaction' value='1'><img src='./images/like.png' alt='jaime' /></button><button type='submit' name='reaction' value='2'><img src='./images/love.png' alt='jadore' /></button><button type='submit' name='reaction' value='3'><img src='./images/haha.png' alt='hahareact' /></button></div></div>";
+                    } else {
+                        echo "<div id='reaction'>réagir<div id='reactionList'><button type='submit' name='reaction' value='0'><img src='./images/x.png' alt='x' /></button><button type='submit' name='reaction' value='1'><img src='./images/like.png' alt='jaime' /></button><button type='submit' name='reaction' value='2'><img src='./images/love.png' alt='jadore' /></button><button type='submit' name='reaction' value='3'><img src='./images/haha.png' alt='hahareact' /></button></div></div>";
+                    }
                 }
             }
             echo "</form>";
             ?>
         </div>
         <div class="postUser">
-            <?php echo "<img src='./images/" . $imgUser . "' alt='user'>"; ?>
+            <?php echo "<img src='./uploads/" . $imgUser . "' alt='utilisateur'>";?>
             <div class="nomUtilisateur">
-                <?php echo "<a href='./profile.php?id=" . $idUser . "'><h4>" . $nomUser . "</h4></a>"; ?>
+
+                <?php  echo "<a href='./profile.php?id=" . $idUser . "'><h4>" . $nomUser . "</h4></a>";  ?>
             </div>
         </div>
     </div>

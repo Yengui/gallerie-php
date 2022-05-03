@@ -215,7 +215,7 @@ if (isset($_GET["id"])) {
                         <div>
                             <input type="file" name="photo" id="photo">
                         </div>
-                        <div style="text-align: center;"><span id="erreur_photo"></span></div>
+                        <div><span id="erreur_photo"></span></div>
 
                     </div>
                     <div class="btnContainer">
