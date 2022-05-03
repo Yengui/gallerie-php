@@ -1,22 +1,115 @@
 <?php
+
+session_start();
+
+if (isset($_SESSION["user_id"])) {
+    
+    $mysqli = require __DIR__ . "/database.php";
+    
+    $sql = "SELECT * FROM users
+            WHERE id = {$_SESSION["user_id"]}";
+            
+    $result = $mysqli->query($sql);
+    
+    $user = $result->fetch_assoc();
+
+}
+
+?>
+<?php
 $id = $_GET["id"];
 //fetch post by id and get $nom $img $description $reaction $reactions $reactionsLike $reactionsLove $reactionsHaha $nomUser $imgUser $idUser
+$sql3 = "SELECT * FROM posts
+            WHERE id_post = {$id}";
+$result3 = $mysqli->query($sql3);
+    
+$post = $result3->fetch_assoc();
+
+$sql4 = "SELECT * FROM reactions
+            WHERE id_post = {$id}";
+$result4 = $mysqli->query($sql4);
+    
+$nb_row = $result4->num_rows;
+
+$sql5 = "SELECT * FROM reactions
+            WHERE id_post = {$id} and reaction=1";
+$result5 = $mysqli->query($sql5);
+    
+$nb_row2 = $result5->num_rows;
+
+$sql6 = "SELECT * FROM reactions
+            WHERE id_post = {$id} and reaction=2";
+$result6 = $mysqli->query($sql6);
+    
+$nb_row3 = $result6->num_rows;
+
+
+$sql7 = "SELECT * FROM reactions
+            WHERE id_post = {$id} and reaction=3";
+$result7 = $mysqli->query($sql7);
+    
+$nb_row4 = $result7->num_rows;
+
+
+
+$sql8 = "SELECT * FROM reactions
+            WHERE id_post = {$id} and id_user={$user["id"]}";
+$result8 = $mysqli->query($sql8);
+    
+$nb_row5 = $result8->num_rows;
+if($nb_row5==0){
+    $rea=false;
+}else{
+    
+    $react = $result8->fetch_assoc();
+    $rea=$react["reaction"];
+}
 
 
 //example values
-$nom = "nom";
-$img = "statsbg.jpeg";
-$description = "description description description description description description description description description description description description description description description ";
-$reactions = 10;
-$reactionsLike = 5;
-$reactionsLove = 3;
-$reactionsHaha = 2;
-$reaction = false; //1 for like, 2 for love, 3 for haha, false for no reaction (it returns false if it finds no line in the db)
-$idUser = 1;
-$nomUser = "Ahmad Yengui";
+$nom = $post["nom_post"];
+$img = $post["nom_photo"];
+$description = $post["descrip"];
+$reactions = $nb_row;
+$reactionsLike = $nb_row2;
+$reactionsLove = $nb_row3;
+$reactionsHaha = $nb_row4;
+$reaction = $rea; //1 for like, 2 for love, 3 for haha, false for no reaction (it returns false if it finds no line in the db)
+$idUser = $user["id"];
+$nomUser = $user["prenom"].$user["nom"];
 $imgUser = "utilisateur1.jpeg";
 
 //take reaction code from $_GET["reaction"] (first check if it is isset($_GET["reaction"])) and change the reaction, if the reaction value is 1 or 2 or 3 set it, if it is 0 delete reaction from table
+if (isset($_GET["reaction"])){
+    $reactio = $_GET["reaction"];
+    if($reactio==0){
+        echo $id;
+        echo $user["id"];
+        $sql10 = "DELETE FROM reactions
+            WHERE id_post = {$id} and id_user={$user["id"]}";
+        $result10 = $mysqli->query($sql10);
+        $reaction = false;
+        header("Location: post.php?id={$id}");
+    }else if($reactio>0){
+        if($rea!=false){
+        $reaction=$reactio;
+        $sql11 = "UPDATE reactions SET reaction=$reactio
+            WHERE id_post = {$id} and id_user={$user["id"]}";
+        $result11 = $mysqli->query($sql11);
+        header("Location: post.php?id={$id}");
+        }else{
+            $reactio = $_GET["reaction"];
+            $reaction=$reactio;
+            $sql12 = "INSERT INTO reactions (id_post, id_user, reaction)
+            VALUES ({$id}, {$user["id"]}, {$reaction})";
+            $result12 = $mysqli->query($sql12);   
+            header("Location: post.php?id={$id}");
+        
+        }
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -51,21 +144,13 @@ $imgUser = "utilisateur1.jpeg";
             </a>
         </div>
     </div>
-    <?php
-    //if (isset($_GET["id"])) {
-    //echo $_GET["id"];
-    //}
-    ?>
-    <?php //if (isset($_GET["reaction"])) {
-    //echo $_GET["reaction"];
-    //}
-    ?>
+    
     <h1>Consulter la pièce d'art</h1>
     <div class="ligne1"></div>
     <div class="ligne2"></div>
     <div class="postcontainer">
         <?php
-        echo "<div class='imgPostContainer'><div class='imgBg'></div><img class='postImg' src='./images/" . $img . "' alt='poste'></div>";
+        echo "<div class='imgPostContainer'><div class='imgBg'></div><img class='postImg' src='./uploads/" . $img . "' alt='poste'></div>";
         echo "<h1 class='postNom' id='post'>" . $nom . "</h1>";
         echo "<p class='postDescription'>" . $description . "</p>";
         ?>

@@ -50,6 +50,7 @@ if (isset($_SESSION["user_id"])) {
         ?>
         <p> nom poste:<?= htmlspecialchars($p["nom_post"]) ?></p>
         <p> utilisateur:<?= htmlspecialchars($us["nom"]) ?></p>
+        <a href="post.php?id=<?php echo $p["id_post"]; ?>">see post</a>
         
     <?php endwhile; ?>
     </div>
