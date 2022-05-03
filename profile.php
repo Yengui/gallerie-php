@@ -125,29 +125,29 @@ $myposts = array(
                         <label for="nom">Nouveau nom: </label>
                     </div>
                     <div>
-                        <input type="text" name="nom" id="nom" required>
+                        <input type="text" name="nom" id="nom">
                     </div>
                     <div>
                         <label for="prenom">Nouveau prenom: </label>
                     </div>
                     <div>
-                        <input type="text" name="prenom" id="prenom" required>
+                        <input type="text" name="prenom" id="prenom">
                     </div>
                     <div>
                         <label for="email">Nouveau email: </label>
                     </div>
                     <div>
-                        <input type="email" name="email" id="email" required>
+                        <input type="email" name="email" id="email">
                     </div>
                     <div>
                         <label for="photo">photo: </label>
                     </div>
                     <div>
-                        <input type="file" name="photo" id="photo" required>
+                        <input type="file" name="photo" id="photo">
                     </div>
                 </div>
                 <div class="btnContainer">
-                    <button>Confirmer</button>
+                    <button type="submit">Confirmer</button>
                 </div>
             </form>
         </div>
