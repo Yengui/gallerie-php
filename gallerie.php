@@ -37,7 +37,7 @@ $result2 = mysqli_query($mysqli, $sql2);
     <link rel="stylesheet" href="./styles/wave.css">
     <script src="https://kit.fontawesome.com/460debd51d.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gallerie</title>
 </head>
 
 <body>
