@@ -31,7 +31,7 @@ if (isset($_SESSION["user_id"])) {
     <link rel="stylesheet" href="./styles/wave.css">
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
     <script src="https://kit.fontawesome.com/460debd51d.js" crossorigin="anonymous"></script>
-    <script src="./scripts/validation.js" defer></script>
+    <script src="./scripts/validation_signup.js" defer></script>
     <title>S'inscrire</title>
 </head>
 

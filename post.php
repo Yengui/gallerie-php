@@ -31,8 +31,9 @@ $result222 = $mysqli->query($sql222);
 $us2 = $result222->fetch_assoc();
 
 
-$nomUser = $us2["nom"];
+$nomUserr = $us2["prenom"] . " " . $us2["nom"];
 $imgUser = $us2["photo"];
+$idUserr = $us2["id"];
 
 
 $sql3 = "SELECT * FROM posts
@@ -99,7 +100,7 @@ if (isset($_SESSION["user_id"])) {
     $idUser = $user["id"];
 }
 if (isset($_SESSION["user_id"])) {
-    $nomUser = $user["prenom"] . " " . $user["nom"];
+    $nomUser = $user["prenom"] . $user["nom"];
 }
 
 //take reaction code from $_GET["reaction"] (first check if it is isset($_GET["reaction"])) and change the reaction, if the reaction value is 1 or 2 or 3 set it, if it is 0 delete reaction from table
@@ -223,7 +224,7 @@ if (isset($_GET["reaction"])) {
             <?php echo "<img src='./uploads/" . $imgUser . "' alt='utilisateur'>"; ?>
             <div class="nomUtilisateur">
 
-                <?php echo "<a href='./profile.php?id=" . $user["id"] . "'><h4>" . $nomUser . "</h4></a>";  ?>
+                <?php echo "<a href='./profile.php?id=" . $idUserr . "'><h4>" . $nomUserr . "</h4></a>";  ?>
             </div>
         </div>
     </div>

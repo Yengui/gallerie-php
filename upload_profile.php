@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
                // $sql2 = "UPDATE users SET prenom={$_POST["prenom"]}, nom={$_POST["nom"]}, photo=$imagenewname WHERE id ={$user["id"]}";
                // $result2 = $mysqli->query($sql2);
 
-               $query = "UPDATE users SET photo ='$imagenewname', nom='$nom', prenom='$prenom', email='$emaill' WHERE id ='$idd'";
+               $query = "UPDATE users SET photo ='$imagenewname', nom='$nom', prenom='$prenom' WHERE id ='$idd'";
                $result3 = mysqli_query($mysqli,$query) or die(mysqli_error($mysqli));
 
                if($result3){
