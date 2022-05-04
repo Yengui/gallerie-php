@@ -17,12 +17,11 @@ if (isset($_SESSION["user_id"])) {
     $sql2 = "SELECT * FROM posts";
 
     $result2 = mysqli_query($mysqli, $sql2);
-}else{
-$mysqli = require __DIR__ . "/database.php";
-$sql2 = "SELECT * FROM posts";
+} else {
+    $mysqli = require __DIR__ . "/database.php";
+    $sql2 = "SELECT * FROM posts";
 
-$result2 = mysqli_query($mysqli, $sql2);
-
+    $result2 = mysqli_query($mysqli, $sql2);
 }
 
 ?>
@@ -42,7 +41,7 @@ $result2 = mysqli_query($mysqli, $sql2);
 
 <body>
 
-<div class="navbarcontainer">
+    <div class="navbarcontainer">
         <div class="logo">Ma <span>Gallerie</span></div>
         <div class="navbar1">
             <div class="nav-btn"><a href="./#">accueil</a></div>
@@ -76,6 +75,13 @@ $result2 = mysqli_query($mysqli, $sql2);
     <h1>Toutes les pièces d'art</h1>
     <div class="ligne1"></div>
     <div class="ligne2"></div>
+    <?php if (isset($user)) : ?>
+        <div class="btnContainer">
+            <a id="btn" href="./newpost.php">
+                <div class="btn">Nouveau poste</div>
+            </a>
+        </div>
+    <?php endif; ?>
     <div class="gallerieContainer">
         <?php
         while ($p = $result2->fetch_assoc()) {
@@ -84,7 +90,8 @@ $result2 = mysqli_query($mysqli, $sql2);
             WHERE id = {$p["id_user"]}";
             $result3 = $mysqli->query($sql3);
             $currentUser = $result3->fetch_assoc();
-            $name=$p["nom_post"];
+            $name = $p["nom_post"];
+            $img = $currentUser["photo"] ? "./uploads/" . $currentUser["photo"] : "./images/utilisateur1.jpeg";
             echo "<div class='carte'>
                 <img class='carte-img' src='./uploads/" . $p["nom_photo"] . "' alt='design'>
                 <div class='carte-partie2'>
@@ -93,7 +100,7 @@ $result2 = mysqli_query($mysqli, $sql2);
                         <div class='img-description'>" . $p["descrip"] . "</div>
                     </div>
                     <div class='utilisateur-info'>
-                        <img class='utilisateur-carte' src='./uploads/" . $currentUser["photo"] . "' alt='utilisateur'>
+                        <img class='utilisateur-carte' src='" . $img . "' alt='utilisateur'>
                         <div><a href='./profile.php?id=" . $currentUser["id"] . "'>" . $currentUser["prenom"] . " " . $currentUser["nom"] . "</a></div>
                     </div>
                 </div>

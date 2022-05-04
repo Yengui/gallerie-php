@@ -223,7 +223,7 @@ if (isset($_GET["reaction"])) {
             <?php echo "<img src='./uploads/" . $imgUser . "' alt='utilisateur'>"; ?>
             <div class="nomUtilisateur">
 
-                <?php echo "<a href='./profile.php?id=" . $id . "'><h4>" . $nomUser . "</h4></a>";  ?>
+                <?php echo "<a href='./profile.php?id=" . $user["id"] . "'><h4>" . $nomUser . "</h4></a>";  ?>
             </div>
         </div>
     </div>
