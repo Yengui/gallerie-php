@@ -1,10 +1,10 @@
 <?php
-
+$mysqli = require __DIR__ . "/database.php";
 session_start();
 
 if (isset($_SESSION["user_id"])) {
 
-    $mysqli = require __DIR__ . "/database.php";
+    
 
     $sql = "SELECT * FROM users
             WHERE id = {$_SESSION["user_id"]}";
@@ -14,6 +14,22 @@ if (isset($_SESSION["user_id"])) {
     $user = $result->fetch_assoc();
 }
 
+?>
+<?php
+$sql2 = "SELECT * FROM reactions";
+$result2 = $mysqli->query($sql2);
+
+$nb_react = $result2->num_rows;
+
+$sql3 = "SELECT * FROM users";
+$result3 = $mysqli->query($sql3);
+
+$nb_users = $result3->num_rows;
+
+$sql4 = "SELECT * FROM posts";
+$result4 = $mysqli->query($sql4);
+
+$nb_posts = $result4->num_rows;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -138,21 +154,24 @@ if (isset($_SESSION["user_id"])) {
             <div class="statsflexelement">
                 <div class="statsicon"><img src="./images/newspaper.png" height="100px" width="100px" alt="utilisateurs"></div>
                 <div class="statstext">
-                    <h2>1234</h2>
+                <?php echo "
+                    <h2>$nb_users</h2> "?>
                     <h4>utilisateurs</h4>
                 </div>
             </div>
             <div class="statsflexelement">
                 <div class="statsicon"><img src="./images/canvas.png" height="100px" width="100px" alt="utilisateurs"></div>
                 <div class="statstext">
-                    <h2>5642</h2>
+                <?php echo "
+                    <h2>$nb_posts</h2> "?>
                     <h4>publications</h4>
                 </div>
             </div>
             <div class="statsflexelement">
                 <div class="statsicon"><img src="./images/positive-vote.png" height="100px" width="100px" alt="utilisateurs"></div>
                 <div class="statstext">
-                    <h2>36521</h2>
+                    <?php echo "
+                    <h2>$nb_react</h2> "?>
                     <h4>réactions</h4>
                 </div>
             </div>
