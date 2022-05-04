@@ -32,7 +32,7 @@ $us2 = $result222->fetch_assoc();
 
 
 $nomUserr = $us2["prenom"] . " " . $us2["nom"];
-$imgUser = $us2["photo"];
+$imgUser = $us2["photo"] ? "./uploads/" . $us2["photo"] : "./images/utilisateur1.jpeg";
 $idUserr = $us2["id"];
 
 
@@ -221,7 +221,7 @@ if (isset($_GET["reaction"])) {
             ?>
         </div>
         <div class="postUser">
-            <?php echo "<img src='./uploads/" . $imgUser . "' alt='utilisateur'>"; ?>
+            <?php echo "<img src='" . $imgUser . "' alt='utilisateur'>"; ?>
             <div class="nomUtilisateur">
 
                 <?php echo "<a href='./profile.php?id=" . $idUserr . "'><h4>" . $nomUserr . "</h4></a>";  ?>

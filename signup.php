@@ -3,22 +3,22 @@
 session_start();
 
 if (isset($_SESSION["user_id"])) {
-    
+
     $mysqli = require __DIR__ . "/database.php";
-    
+
     $sql = "SELECT * FROM users
             WHERE id = {$_SESSION["user_id"]}";
-            
+
     $result = $mysqli->query($sql);
-    
+
     $user = $result->fetch_assoc();
 }
-    ?>
+?>
 
-<?php if (isset($user)){
-         header("Location: profile.php");
-     }   
-    ?>
+<?php if (isset($user)) {
+    header("Location: profile.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +54,7 @@ if (isset($_SESSION["user_id"])) {
         </div>
     </div>
 
-    <section class="loginsection">
+    <section class="signupsection">
         <form action="process-signup.php" method="POST" id="form2" novalidate>
             <div class="img2">
                 <img src="./images/signupvector.png" width="190px" height="223px" alt="login">
