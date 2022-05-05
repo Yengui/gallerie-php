@@ -4,7 +4,7 @@ session_start();
 
 if (isset($_SESSION["user_id"])) {
 
-    
+
 
     $sql = "SELECT * FROM users
             WHERE id = {$_SESSION["user_id"]}";
@@ -101,11 +101,11 @@ $nb_posts = $result4->num_rows;
         <div class="ligne2"></div>
         <div class="meilleur-container">
             <div class="carte">
-                <img class="carte-img" src="https://images.pexels.com/photos/889839/pexels-photo-889839.jpeg?width=300" alt="design 1">
+                <img class="carte-img" src="./uploads/62729de0027445.18285056.jpeg" alt="design 1">
                 <div class="carte-partie2">
                     <div class="img-info">
                         <div class="img-titre"><a href="./post.php?id=1">Dessin sur bois</a></div>
-                        <div class="img-description">Dessin moderne d'une femme sur bois utilisant les couleurs marron et bleu</div>
+                        <div class="img-description">Dessin moderne d'une femme sur bois utilisant les couleurs marron et bleu.</div>
                     </div>
                     <div class="utilisateur-info">
                         <img class="utilisateur-carte" src="./images/utilisateur1.jpeg" alt="utilisateur 1">
@@ -114,11 +114,11 @@ $nb_posts = $result4->num_rows;
                 </div>
             </div>
             <div class="carte">
-                <img class="carte-img" src="https://images.pexels.com/photos/1690351/pexels-photo-1690351.jpeg?width=300" alt="design 2">
+                <img class="carte-img" src="./uploads/62729e1fb94a45.12193398.jpeg" alt="design 2">
                 <div class="carte-partie2">
                     <div class="img-info">
                         <div class="img-titre"><a href="./post.php?id=2">Tableau artistique</a></div>
-                        <div class="img-description">Tableau artistique utilisant la peinture noire, bleu et jaune test test test test test test test test test test test test test test test test test test test test test test testtest test test test test test test test test test test test test test test test </div>
+                        <div class="img-description">Tableau artistique utilisant la peinture noire, bleu et jaune.</div>
                     </div>
                     <div class="utilisateur-info">
                         <img class="utilisateur-carte" src="./images/utilisateur1.jpeg" alt="utilisateur 1">
@@ -127,7 +127,7 @@ $nb_posts = $result4->num_rows;
                 </div>
             </div>
             <div class="carte">
-                <img class="carte-img" src="https://images.pexels.com/photos/1477166/pexels-photo-1477166.jpeg?width=300" alt="design 3">
+                <img class="carte-img" src="./uploads/62729e45541ff7.86098765.jpeg" alt="design 3">
                 <div class="carte-partie2">
                     <div class="img-info">
                         <div class="img-titre"><a href="./post.php?id=3">Fleurs!</a></div>
@@ -154,16 +154,16 @@ $nb_posts = $result4->num_rows;
             <div class="statsflexelement">
                 <div class="statsicon"><img src="./images/newspaper.png" height="100px" width="100px" alt="utilisateurs"></div>
                 <div class="statstext">
-                <?php echo "
-                    <h2>$nb_users</h2> "?>
+                    <?php echo "
+                    <h2>$nb_users</h2> " ?>
                     <h4>utilisateurs</h4>
                 </div>
             </div>
             <div class="statsflexelement">
                 <div class="statsicon"><img src="./images/canvas.png" height="100px" width="100px" alt="utilisateurs"></div>
                 <div class="statstext">
-                <?php echo "
-                    <h2>$nb_posts</h2> "?>
+                    <?php echo "
+                    <h2>$nb_posts</h2> " ?>
                     <h4>publications</h4>
                 </div>
             </div>
@@ -171,7 +171,7 @@ $nb_posts = $result4->num_rows;
                 <div class="statsicon"><img src="./images/positive-vote.png" height="100px" width="100px" alt="utilisateurs"></div>
                 <div class="statstext">
                     <?php echo "
-                    <h2>$nb_react</h2> "?>
+                    <h2>$nb_react</h2> " ?>
                     <h4>réactions</h4>
                 </div>
             </div>
@@ -190,25 +190,25 @@ $nb_posts = $result4->num_rows;
 
             <div class="temCarte">
                 <img id="temQuote1" src="./images/quote.svg" alt="quote mark">
-                <img id="temImg" src="./images/utilisateur1.jpeg" alt="utilisateur1">
+                <img id="temImg" src="./uploads/ahmad.jpg" alt="utilisateur1">
                 <h2>Ahmad Yengui</h2>
-                <p>Je peux dire que c'est le meilleur site pour les artistes Tunisiens</p>
+                <p>Je peux dire que c'est le meilleur site pour les artistes Tunisiens.</p>
                 <img id="temQuote2" src="./images/quote.svg" alt="quote mark">
             </div>
 
             <div class="temCarte">
                 <img id="temQuote1" src="./images/quote.svg" alt="quote mark">
-                <img id="temImg" src="./images/utilisateur1.jpeg" alt="utilisateur1">
-                <h2>Ahmad Yengui</h2>
-                <p>Je peux dire que c'est le meilleur site pour les artistes Tunisiens</p>
+                <img id="temImg" src="./uploads/aymen.jpg" alt="utilisateur2">
+                <h2>Aymen Allani</h2>
+                <p>Une expérience extraordinaire dans Ma Gallerie.</p>
                 <img id="temQuote2" src="./images/quote.svg" alt="quote mark">
             </div>
 
             <div class="temCarte">
                 <img id="temQuote1" src="./images/quote.svg" alt="quote mark">
-                <img id="temImg" src="./images/utilisateur1.jpeg" alt="utilisateur1">
-                <h2>Ahmad Yengui</h2>
-                <p>Je peux dire que c'est le meilleur site pour les artistes Tunisiens</p>
+                <img id="temImg" src="./uploads/ali.jpg" alt="utilisateur3">
+                <h2>Ali Ben Salah</h2>
+                <p>Je suis heureux d'avoir une place pour nous, les artistes.</p>
                 <img id="temQuote2" src="./images/quote.svg" alt="quote mark">
             </div>
 

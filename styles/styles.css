@@ -375,13 +375,13 @@
 }
 
 .temCarte::before {
-  content: "#1";
+  content: "★★★";
   line-height: 70px;
   text-align: center;
   font-size: 32px;
   font-weight: bold;
   height: 70px;
-  width: 500px;
+  width: 525px;
   color: white;
   background-color: var(--blue);
   transform: rotate(45deg);

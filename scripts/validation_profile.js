@@ -1,5 +1,9 @@
 let upform = document.getElementById("update_form");
 
+function contientNombre(monString) {
+  return /\d/.test(monString);
+}
+
 upform.addEventListener("submit", function (e) {
   let nom = document.getElementById("nom");
   let prenom = document.getElementById("prenom");
@@ -17,9 +21,19 @@ upform.addEventListener("submit", function (e) {
     erreur_nom.style.color = "red";
     e.preventDefault();
   }
+  if (contientNombre(nom.value)) {
+    erreur_nom.innerHTML = "le nom ne doit pas contenir de nombres.";
+    erreur_nom.style.color = "red";
+    e.preventDefault();
+  }
   if (prenom.value == "") {
     erreur_prenom.innerHTML = "le chapms prénom est obligatoire.";
     erreur_prenom.style.color = "red";
+    e.preventDefault();
+  }
+  if (contientNombre(prenom.value)) {
+    erreur_nom.innerHTML = "le prenom ne doit pas contenir de nombres.";
+    erreur_nom.style.color = "red";
     e.preventDefault();
   }
   if (photo.value == "") {
